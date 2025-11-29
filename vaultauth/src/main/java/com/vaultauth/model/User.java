@@ -1,6 +1,7 @@
 package com.vaultauth.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "app_users")
 public class User implements UserDetails {
@@ -32,12 +34,6 @@ public class User implements UserDetails {
     @Column(name = "verification_code_expiry")
     private LocalDateTime verificationExpiry;
     private boolean enabled;
-
-    public User(String username, String email, String password) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
