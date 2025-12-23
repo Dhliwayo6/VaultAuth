@@ -10,13 +10,19 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
+    @ExceptionHandler(AccountAlreadyVerifiedException.class)
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public ErrorResponse handleAccountAlreadyFoundException(AccountAlreadyVerifiedException exception) {
+        return new ErrorResponse(exception.getMessage());
+    }
+
     @ExceptionHandler(VerificationTokenExpiredException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ResponseBody
     public ErrorResponse handleVerificationTokenExpiredException(VerificationTokenExpiredException exception) {
         return new ErrorResponse(exception.getMessage());
     }
-    
 
 
 }
