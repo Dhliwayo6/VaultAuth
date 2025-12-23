@@ -10,7 +10,7 @@ public enum ErrorMessages {
     VALIDATION_ERROR("Validation error"),
     INVALID_CREDENTIALS("Invalid username or password");
 
-    private String message;
+    private final String message;
 
     ErrorMessages(String message) {
         this.message = message;
