@@ -24,12 +24,18 @@ public class GlobalExceptionHandler {
         return new ErrorResponse(exception.getMessage());
     }
 
+    @ExceptionHandler(EmailAlreadyExistsException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    @ResponseBody
+    public ErrorResponse handleEmailAlreadyExistsException(EmailAlreadyExistsException exception) {
+        return new ErrorResponse(exception.getMessage());
+    }
+
     @ExceptionHandler(VerificationTokenExpiredException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ResponseBody
     public ErrorResponse handleVerificationTokenExpiredException(VerificationTokenExpiredException exception) {
         return new ErrorResponse(exception.getMessage());
     }
-
-
+    
 }
