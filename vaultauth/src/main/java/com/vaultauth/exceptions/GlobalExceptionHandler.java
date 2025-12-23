@@ -17,6 +17,13 @@ public class GlobalExceptionHandler {
         return new ErrorResponse(exception.getMessage());
     }
 
+    @ExceptionHandler(AccountNotVerifiedException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    @ResponseBody
+    public ErrorResponse handleAccountNotFoundException(AccountNotVerifiedException exception) {
+        return new ErrorResponse(exception.getMessage());
+    }
+
     @ExceptionHandler(VerificationTokenExpiredException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ResponseBody
